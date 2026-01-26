@@ -1,0 +1,15 @@
+{
+  "hero": {
+    "title": "Kontakt",
+    "subtitle": "Pošlji povpraševanje ali vprašanje — odgovorimo hitro."
+  },
+  "contact": {
+    "name": "ModernStay",
+    "email": "info@mymodernstay.com",
+    "phone": "+386 40 000 000",
+    "address": "Rawai, Phuket, Thailand"
+  },
+  "form": {
+    "notice": "Ta obrazec je statičen. Za pošiljanje na email priporočam Netlify Forms ali podobno (lahko dodam)."
+  }
+}

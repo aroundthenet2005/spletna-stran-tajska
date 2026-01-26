@@ -1,0 +1,21 @@
+{
+  "id": "apartma1",
+  "name": "Apartma 1",
+  "teaser": "Short, premium one‑liner that sells.",
+  "description": "Longer description. Add amenities, size, vibe, and who it’s perfect for.",
+  "maxGuests": 4,
+  "beds": "1 King + sofa bed",
+  "size": "42 m²",
+  "highlights": [
+    "Fast Wi‑Fi",
+    "Air conditioning",
+    "Kitchen",
+    "Balcony"
+  ],
+  "bookingUrl": "https://beds24.com/book-calypsophuket",
+  "gallery": [
+    "assets/media/images/placeholder-1.svg",
+    "assets/media/images/placeholder-2.svg",
+    "assets/media/images/placeholder-3.svg"
+  ]
+}
