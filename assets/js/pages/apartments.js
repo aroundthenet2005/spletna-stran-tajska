@@ -6,7 +6,7 @@ async function main(){
   const aps = await Promise.all((idx.list||[]).map(id=> getJSON(`content/apartments/${id}.json`)));
   qs("#grid").innerHTML = aps.map(ap=>`
     <a class="card ap-card fade" href="apartment.html?id=${encodeURIComponent(ap.id)}">
-      <div class="img"><img src="${ap.gallery?.[0] || "assets/media/images/placeholder-1.svg"}" alt="${escapeHTML(ap.name||"Apartment")}"></div>
+      <div class="img"><img src="${ap.gallery?.[0] || "assets/media/images/1slika.png"}" alt="${escapeHTML(ap.name||"Apartment")}"></div>
       <div class="body">
         <div class="badge"><span class="dot"></span>${escapeHTML(ap.size||"")}${ap.maxGuests? " • "+escapeHTML(String(ap.maxGuests))+" guests":""}</div>
         <div class="name">${escapeHTML(ap.name||"")}</div>
