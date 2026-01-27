@@ -1,4 +1,5 @@
 :root{
+  --navH: 76px; /* navbar height */
   --bg:#070a10; --surface: rgba(255,255,255,0.04); --border: rgba(234,240,255,0.14);
   --text: rgba(234,240,255,0.92); --muted: rgba(234,240,255,0.68);
   --accent:#7C5CFF; --accent2:#00D1FF; --radius:18px; --shadow: 0 28px 90px rgba(0,0,0,0.55); --max: 1160px;
@@ -16,8 +17,11 @@ background: rgba(255,255,255,0.04); color: var(--text); font-weight:850; letter-
 .badge{display:inline-flex; align-items:center; gap:8px; padding:7px 10px; border-radius:999px; border:1px solid var(--border);
 color: var(--muted); font-weight:900; font-size:12px; letter-spacing:0.08em; text-transform: uppercase}
 .badge .dot{width:8px; height:8px; border-radius:999px; background: linear-gradient(135deg, var(--accent), var(--accent2))}
-.nav{position: sticky; top:0; z-index: 9990; backdrop-filter: blur(14px); background: rgba(7,10,16,0.72);
-border-bottom: 1px solid rgba(234,240,255,0.10);}
+.nav{position: fixed; top:0; z-index: 9990; backdrop-filter: blur(14px); background: rgba(7,10,16,0.22);
+border-bottom: 1px solid rgba(234,240,255,0.10);
+  left:0;
+  right:0;
+}
 .nav-inner{display:flex; align-items:center; justify-content:space-between; gap:14px; padding:14px 0}
 .brand{display:flex; align-items:center; gap:12px; font-weight:950; letter-spacing:0.02em}
 .logo{width:36px; height:36px; border-radius:12px; background: linear-gradient(135deg, rgba(124,92,255,0.95), rgba(0,209,255,0.75));
@@ -75,3 +79,7 @@ padding:12px 12px; border-radius: 18px; border:1px solid rgba(234,240,255,0.14);
   .hero-bg .shade{background: linear-gradient(180deg, rgba(7,10,16,0.40) 0%, rgba(7,10,16,0.86) 100%);}
   .hero-full-content{padding: 96px 0 30px}
 }
+
+body{ padding-top: var(--navH); }
+
+.hero.hero-full{ margin-top: calc(-1 * var(--navH)); }
