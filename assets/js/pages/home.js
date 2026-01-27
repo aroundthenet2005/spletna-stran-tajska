@@ -18,7 +18,7 @@ async function main(){
   const v = qs("#heroVideo");
   const img = qs("#heroPoster");
   const videoUrl = page.hero?.video || "";
-  const posterUrl = page.hero?.poster || "assets/media/images/placeholder-hero.svg";
+  const posterUrl = page.hero?.poster || "assets/media/images/hero.jpg";
 
   if(img) img.src = posterUrl;
 
@@ -52,7 +52,7 @@ async function main(){
   qs("#apSub").textContent = page.sections?.apartmentsSubtitle || "";
   qs("#apartmentsGrid").innerHTML = aps.map(ap=>`
     <a class="card ap-card fade" href="apartment.html?id=${encodeURIComponent(ap.id)}">
-      <div class="img"><img src="${ap.gallery?.[0] || "assets/media/images/placeholder-1.svg"}" alt="${escapeHTML(ap.name||"Apartment")}"></div>
+      <div class="img"><img src="${ap.gallery?.[0] || "assets/media/images/01.jpg"}" alt="${escapeHTML(ap.name||"Apartment")}"></div>
       <div class="body">
         <div class="badge"><span class="dot"></span>${escapeHTML(ap.size||"")}${ap.maxGuests? " • "+escapeHTML(String(ap.maxGuests))+" guests":""}</div>
         <div class="name">${escapeHTML(ap.name||"")}</div>
