@@ -5,11 +5,11 @@
   "tourEmbedUrl": "https://vt.photoup.net/15ET/calypso-garden-residences-rawai-mueang-phuket-district-phuket-tajska/embed",
   "nav": [
     {
-      "label": "Domov",
+      "label": "Home",
       "href": "index.html"
     },
     {
-      "label": "Apartmaji",
+      "label": "Apartments",
       "href": "apartments.html"
     },
     {
@@ -17,15 +17,15 @@
       "href": "residence.html"
     },
     {
-      "label": "Razpoložljivost",
+      "label": "Availability",
       "href": "availability.html"
     },
     {
-      "label": "Pravila",
+      "label": "Policies",
       "href": "policies.html"
     },
     {
-      "label": "Kontakt",
+      "label": "Contact",
       "href": "contact.html"
     }
   ],
