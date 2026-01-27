@@ -1,0 +1,114 @@
+{
+  "botName": "Support",
+  "welcome": "Živjo! 👋 Kako ti lahko pomagam?",
+  "fallback": "Tega še nimam v bazi. Napiši mi malo bolj konkretno (npr. check‑in, parking, pets, booking) ali pa piši na {email}.",
+  "quickReplies": [
+    "Kako rezerviram?",
+    "Check‑in / check‑out",
+    "Koliko oseb?",
+    "3D tour",
+    "Kontakt"
+  ],
+  "items": [
+    {
+      "q": [
+        "kako rezerviram",
+        "rezervacija",
+        "booking",
+        "book now",
+        "rezerviraj",
+        "kako bookam"
+      ],
+      "a": "Rezervacijo narediš prek našega booking sistema tukaj: {bookingUrl}."
+    },
+    {
+      "q": [
+        "check in",
+        "check-in",
+        "prihod",
+        "check out",
+        "check-out",
+        "odhod",
+        "ura prihoda",
+        "ura odhoda"
+      ],
+      "a": "Standardno: check‑in od 15:00, check‑out do 10:00. (Če želiš drugače, uredi v `content/pages/policies.md`.)"
+    },
+    {
+      "q": [
+        "kolikšna je cena",
+        "cena",
+        "prices",
+        "price",
+        "koliko stane",
+        "tarifa"
+      ],
+      "a": "Cene in razpoložljivost so vedno najbolj točne v booking sistemu: {bookingUrl}."
+    },
+    {
+      "q": [
+        "3d tour",
+        "virtual tour",
+        "ogled",
+        "360"
+      ],
+      "a": "3D ogled lahko odpreš tukaj (embedded tudi na strani): {tourEmbedUrl}."
+    },
+    {
+      "q": [
+        "kontakt",
+        "email",
+        "telefon",
+        "phone",
+        "call"
+      ],
+      "a": "Kontakt: {email} • {phone}."
+    },
+    {
+      "q": [
+        "kako do lokacije",
+        "lokacija",
+        "address",
+        "kje ste",
+        "kje se nahaja",
+        "map"
+      ],
+      "a": "Lokacija: {address}. Če želiš, dodaj Google Maps link v `content/pages/contact.json`."
+    },
+    {
+      "q": [
+        "parking",
+        "parkirišče",
+        "parkiranje"
+      ],
+      "a": "Parking: (vpiši konkretno pravilo/ponudbo v `content/pages/policies.md` ali `content/pages/residence.json`)."
+    },
+    {
+      "q": [
+        "pets",
+        "hišni ljubljenčki",
+        "pes",
+        "mačka"
+      ],
+      "a": "Pets policy: (vpiši v `content/pages/policies.md`)."
+    },
+    {
+      "q": [
+        "smoking",
+        "kajenje",
+        "cigaret"
+      ],
+      "a": "Kajenje: (vpiši v `content/pages/policies.md`)."
+    },
+    {
+      "q": [
+        "odpoved",
+        "cancellation",
+        "refund",
+        "povračilo",
+        "storno"
+      ],
+      "a": "Odpovedni pogoji: (vpiši v `content/pages/policies.md`). Za aktualne pogoje pri rezervaciji preveri tudi booking flow."
+    }
+  ]
+}
