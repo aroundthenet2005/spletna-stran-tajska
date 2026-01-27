@@ -47,7 +47,24 @@ export async function mountNav(activeHref){
       </div>
     </div>`;
   const btn = qs("#mobileToggle"), mm = qs("#mobileMenu");
-  if(btn && mm) btn.addEventListener("click", ()=> mm.style.display = (mm.style.display==="none"?"block":"none"));
+  if(btn && mm){
+    const close = ()=> mm.style.display = "none";
+    const toggle = ()=> mm.style.display = (mm.style.display==="none" ? "block" : "none");
+
+    btn.addEventListener("click", (e)=>{ e.stopPropagation(); toggle(); });
+
+    // Close when clicking any link in the mobile menu
+    mm.addEventListener("click", (e)=>{
+      const a = e.target.closest("a");
+      if(a) close();
+      e.stopPropagation();
+    });
+
+    // Close when tapping outside
+    document.addEventListener("click", ()=> close());
+    // Escape to close (desktop)
+    document.addEventListener("keydown", (e)=>{ if(e.key==="Escape") close(); });
+  }
 }
 export async function mountFooter(){
   const g = await getJSON("content/settings/global.json");
