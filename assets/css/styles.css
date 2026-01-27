@@ -83,3 +83,10 @@ padding:12px 12px; border-radius: 18px; border:1px solid rgba(234,240,255,0.14);
 body{ padding-top: var(--navH); }
 
 .hero.hero-full{ margin-top: calc(-1 * var(--navH)); }
+
+/* === NAV: fully transparent on homepage (video behind) === */
+body.home .nav{
+  background: transparent !important;
+  border-bottom-color: transparent !important;
+  backdrop-filter: none !important;
+}
