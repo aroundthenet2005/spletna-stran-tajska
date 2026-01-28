@@ -9,7 +9,7 @@ To ni identična kopija nobene obstoječe strani. Je originalen template s podob
 - availability page (Beds24 embed ali gumb)
 - content v JSON/MD, media v ločenih mapah
 
-UREJANJE
+EDITING
 --------
 1) Teksti/linki:
    - content/settings/global.json (bookingUrl + tourEmbedUrl)
@@ -26,6 +26,6 @@ UREJANJE
 IN-PAGE EDITOR (brez kode)
 --------------------------
 - Odpri stran z ?edit=1 (npr. index.html?edit=1)
-- Klikni "Edit mode: ON"
-- Klikni tekst in ga uredi
+- Click "Edit mode: ON"
+- Click tekst in ga uredi
 - "Download changes" prenese JSON datoteke (zamenjaj jih v /content in push na GitHub)

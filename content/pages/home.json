@@ -1,14 +1,14 @@
 {
   "hero": {
-    "kicker": "Luxury Apartments",
+    "kicker": "APARTMENT 1 OF 3",
     "title": "A modern stay, made simple.",
-    "subtitle": "Three curated apartments. Clean design. Direct booking.",
+    "subtitle": "Direct booking • 3D tour • Photo gallery",
     "video": "assets/media/video/hero.mp4",
     "poster": "assets/media/images/hero.jpg"
   },
   "sections": {
-    "apartmentsTitle": "Choose your apartment",
-    "apartmentsSubtitle": "Three options. Same standards.",
+    "apartmentsTitle": "More apartments",
+    "apartmentsSubtitle": "We have three apartments in the same residence.",
     "tourTitle": "3D Tour",
     "tourSubtitle": "Explore the residence instantly — no redirects.",
     "residenceTitle": "The Residence",

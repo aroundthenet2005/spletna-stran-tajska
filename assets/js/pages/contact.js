@@ -3,7 +3,7 @@ async function main(){
   applyTheme(await getJSON("content/settings/theme.json"));
   await mountNav("contact.html");
   const p = await getJSON("content/pages/contact.json");
-  qs("#title").textContent = p.hero?.title || "Kontakt";
+  qs("#title").textContent = p.hero?.title || "Contact";
   qs("#sub").textContent = p.hero?.subtitle || "";
   qs("#name").textContent = p.contact?.name || "";
   qs("#email").textContent = p.contact?.email || "";

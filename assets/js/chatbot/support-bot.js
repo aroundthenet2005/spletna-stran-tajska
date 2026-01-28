@@ -1,5 +1,17 @@
 import { getJSON, escapeHTML, toast } from "../app.js";
 
+const MS_BOT_LOG_KEY = "MS_BOT_LOGS_V1";
+function logBotInteraction(entry){
+  try{
+    const arr = JSON.parse(localStorage.getItem(MS_BOT_LOG_KEY) || "[]");
+    arr.push(entry);
+    // keep last 500
+    if(arr.length > 500) arr.splice(0, arr.length - 500);
+    localStorage.setItem(MS_BOT_LOG_KEY, JSON.stringify(arr));
+  }catch(e){ /* ignore */ }
+}
+
+
 function normalize(s=""){
   return s.toLowerCase()
     .replace(/[čć]/g,"c").replace(/š/g,"s").replace(/ž/g,"z")
@@ -150,7 +162,7 @@ async function main(){
     chips.appendChild(chip);
   });
   const row = el("div", {class:"msbot-row"});
-  const input = el("input", {class:"msbot-input", placeholder:"Vprašaj (npr. booking, check-in, 3D tour)…", autocomplete:"off"});
+  const input = el("input", {class:"msbot-input", placeholder:"Ask a question (e.g. booking, check-in, parking, 3D tour)…", autocomplete:"off"});
   const sendBtn = el("button", {class:"msbot-send", type:"button"}, "Send");
   row.appendChild(input);
   row.appendChild(sendBtn);
@@ -182,10 +194,10 @@ async function main(){
   function answer(text){
     const m = bestMatch(text, faq.items || []);
     const threshold = 0.28;
-    if(m.item && m.score >= threshold){
-      return applyPlaceholders(m.item.a, globals);
-    }
-    return applyPlaceholders(faq.fallback, globals);
+    const matched = !!(m.item && m.score >= threshold);
+    const raw = matched ? m.item.a : faq.fallback;
+    const out = applyPlaceholders(raw, globals);
+    return { text: out, matched, score: m.score || 0, matchedQ: matched ? (Array.isArray(m.item.q)? m.item.q[0] : m.item.q) : null };
   }
 
   function send(text){
@@ -193,7 +205,9 @@ async function main(){
     if(!t) return;
     appendMsg(body, "user", t);
     const a = answer(t);
-    setTimeout(()=> appendMsg(body, "bot", a), 120);
+    // log (works on GitHub Pages via localStorage)
+    logBotInteraction({ ts: new Date().toISOString(), q: t, matched: a.matched, score: a.score, matchedQ: a.matchedQ, page: location.pathname });
+    setTimeout(()=> appendMsg(body, "bot", a.text), 120);
   }
 
   appendMsg(body, "bot", applyPlaceholders(faq.welcome, globals));

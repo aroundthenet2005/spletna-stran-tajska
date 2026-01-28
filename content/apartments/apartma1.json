@@ -28,5 +28,36 @@
     "assets/media/images/12.jpg",
     "assets/media/images/13.jpg",
     "assets/media/images/14.jpg"
-  ]
+  ],
+  "landingTitle": "Your private retreat in the heart of Phuket.",
+  "landingSubtitle": "Stylish 2‑bedroom apartment for work trips or getaways. (We also have 3 apartments in the same residence.)",
+  "ratingLine": "★ ★ ★ ★ ★  •  Self check‑in  •  Fast Wi‑Fi",
+  "facts": {
+    "sleeps": "Sleeps 4 guests",
+    "bedrooms": "2 bedrooms",
+    "bathrooms": "1.5 bathrooms",
+    "wifi": "High‑speed Wi‑Fi"
+  },
+  "explore": {
+    "title": "Explore the space",
+    "tabGallery": "Photo gallery",
+    "tabTour": "3D virtual tour",
+    "ctaLabel": "See available dates"
+  },
+  "whyLove": [
+    "Walk to cafes & attractions",
+    "Quiet & cosy at night",
+    "Perfect for remote work",
+    "Hotel‑style cleanliness"
+  ],
+  "neighborhood": {
+    "title": "Discover the neighborhood",
+    "mapEmbedUrl": "",
+    "note": "Add your Google Maps embed link in content/apartments/apartma1.json → neighborhood.mapEmbedUrl"
+  },
+  "testimonial": {
+    "quote": "Amazing location! Super clean and exactly as described.",
+    "author": "Guest review",
+    "stars": 5
+  }
 }

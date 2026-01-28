@@ -1,7 +1,7 @@
 {
   "hero": {
-    "title": "Kontakt",
-    "subtitle": "Pošlji povpraševanje ali vprašanje — odgovorimo hitro."
+    "title": "Contact",
+    "subtitle": "Send a question or enquiry — we reply fast."
   },
   "contact": {
     "name": "ModernStay",
@@ -10,6 +10,6 @@
     "address": "Rawai, Phuket, Thailand"
   },
   "form": {
-    "notice": "Ta obrazec je statičen. Za pošiljanje na email priporočam Netlify Forms ali podobno (lahko dodam)."
+    "notice": "This form is static. To send submissions to email, use Netlify Forms (or similar)."
   }
 }

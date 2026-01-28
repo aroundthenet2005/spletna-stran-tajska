@@ -16,4 +16,4 @@
 - (define)
 
 ---
-Uredi ta tekst v datoteki: `content/pages/policies.md`
+Edit this text in: `content/pages/policies.md`

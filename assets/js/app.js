@@ -33,7 +33,7 @@ export async function mountNav(activeHref){
           ${(g.nav||[]).map(i=> `<a href="${i.href}" ${i.href===activeHref? 'style="color: rgba(234,240,255,0.95)"':''}>${escapeHTML(i.label)}</a>`).join("")}
         </nav>
         <div class="nav-cta">
-          <a class="btn ghost" href="availability.html">Razpoložljivost</a>
+          <a class="btn ghost" href="availability.html">Availability</a>
           <a class="btn primary" href="${g.bookingUrl}" target="_blank" rel="noopener">${escapeHTML(g.ctaLabel||"BOOK NOW")}</a>
           <button class="btn mobile-toggle" id="mobileToggle" type="button">Menu</button>
         </div>
@@ -79,7 +79,7 @@ export async function mountFooter(){
             <div class="small">${escapeHTML(f.col1Text || "")}</div>
           </div>
           <div>
-            <div class="badge"><span class="dot"></span>${escapeHTML(f.col2Title || "Kontakt")}</div>
+            <div class="badge"><span class="dot"></span>${escapeHTML(f.col2Title || "Contact")}</div>
             <div style="margin-top:10px" class="small">
               <div>${escapeHTML(f.email || "")}</div>
               <div>${escapeHTML(f.phone || "")}</div>

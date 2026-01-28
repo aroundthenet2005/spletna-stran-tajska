@@ -5,11 +5,11 @@
   "tourEmbedUrl": "https://vt.photoup.net/15ET/calypso-garden-residences-rawai-mueang-phuket-district-phuket-tajska/embed",
   "nav": [
     {
-      "label": "Domov",
+      "label": "Home",
       "href": "index.html"
     },
     {
-      "label": "Apartmaji",
+      "label": "Apartments",
       "href": "apartments.html"
     },
     {
@@ -17,15 +17,15 @@
       "href": "residence.html"
     },
     {
-      "label": "Razpoložljivost",
+      "label": "Availability",
       "href": "availability.html"
     },
     {
-      "label": "Pravila",
+      "label": "Policies",
       "href": "policies.html"
     },
     {
-      "label": "Kontakt",
+      "label": "Contact",
       "href": "contact.html"
     }
   ],
@@ -35,7 +35,7 @@
   "footer": {
     "col1Title": "mymodernstay.com",
     "col1Text": "Direct booking. Clear policies. Fast support.",
-    "col2Title": "Kontakt",
+    "col2Title": "Contact",
     "email": "info@mymodernstay.com",
     "phone": "+386 40 000 000",
     "address": "Rawai, Phuket, Thailand",
@@ -51,5 +51,6 @@
       }
     ],
     "copyright": "© {year} mymodernstay.com"
-  }
+  },
+  "primaryApartmentId": "apartma1"
 }
