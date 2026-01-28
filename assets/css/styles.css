@@ -351,3 +351,32 @@ body.home .hero.hero-full{ margin-top: 0 !important; }
   .gallery-strip{ grid-template-columns: 1fr; }
   .gallery-strip img{ height: 190px; }
 }
+
+
+/* --- SINGLE APARTMENT polish (readability + layout) --- */
+.booking-wrap .h2, .booking-wrap .p, .booking-wrap .sub, .booking-wrap .small, .booking-wrap li{ color: rgba(14,24,33,0.88); }
+.booking-wrap .small{ color: rgba(14,24,33,0.68); }
+.booking-wrap code{ color: rgba(14,24,33,0.80); background: rgba(14,24,33,0.06); border: 1px solid rgba(14,24,33,0.12); }
+.booking-wrap .booking-head .sub{ max-width: 78ch; }
+
+.h1, .h2, .h3, .p, .sub{ overflow-wrap:anywhere; word-break:break-word; }
+.card, .booking-shell{ overflow:hidden; }
+
+.comfort{ background: rgba(255,255,255,0.92); border: 1px solid rgba(0,0,0,0.10); }
+.comfort .comfort-t{ color: rgba(14,24,33,0.82); }
+.comfort .comfort-ic{ background: rgba(42,157,143,0.14); }
+
+.explore-split{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:10px; }
+@media (max-width: 980px){ .explore-split{ grid-template-columns:1fr; } }
+.explore-box{ border-radius:16px; border:1px solid rgba(0,0,0,0.10); background: rgba(255,255,255,0.86); padding:12px; }
+.explore-box-head{ display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px; }
+
+.tour-embed .iframe, .avail-embed .iframe{ width:100%; border:0; border-radius: calc(var(--radius) + 6px); min-height: 420px; background: rgba(255,255,255,0.02); }
+.avail-embed .iframe{ min-height: 560px; }
+
+.gallery{ display:grid; grid-template-columns: repeat(4,1fr); gap:10px; }
+@media (max-width: 980px){ .gallery{ grid-template-columns: repeat(2,1fr); } }
+.gallery a{ display:block; }
+.gallery img{ width:100%; height:120px; object-fit:cover; display:block; border-radius:16px; border:1px solid rgba(0,0,0,0.10); }
+
+.booking-cta-row{ gap:10px; flex-wrap:wrap; }

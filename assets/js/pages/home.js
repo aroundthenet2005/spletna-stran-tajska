@@ -113,36 +113,21 @@ async function main(){
       <div class="comfort-t">${escapeHTML(x.label)}</div>
     </div>
   `).join("");
-
-  // Explore tabs
-  const tabGalleryBtn = qs("#tabGalleryBtn");
-  const tabTourBtn = qs("#tabTourBtn");
-  const tabGallery = qs("#tabGallery");
-  const tabTour = qs("#tabTour");
-
-  function setTab(which){
-    const isGallery = which==="gallery";
-    tabGalleryBtn.classList.toggle("active", isGallery);
-    tabTourBtn.classList.toggle("active", !isGallery);
-    tabGallery.style.display = isGallery ? "block" : "none";
-    tabTour.style.display = isGallery ? "none" : "block";
-  }
-  tabGalleryBtn.addEventListener("click", ()=> setTab("gallery"));
-  tabTourBtn.addEventListener("click", ()=> setTab("tour"));
-
-  // Default: show 3D tour without requiring a click
+ Default: show 3D tour without requiring a click
   setTab("tour");
 
   // Home gallery: use first 6 images
   const gallery = (ap.gallery || []).slice(0, 6);
   qs("#homeGallery").innerHTML = gallery.map(src=>`
-    <a href="gallery.html">
+    <a href="gallery.html" class="gimg">
       <img class="fade" src="${src}" alt="Gallery">
     </a>
   `).join("") || `<div class="small">Add images to <code>assets/media/images/01.jpg</code> …</div>`;
 
   // 3D embed
   const tourEmbed = g.tourEmbedUrl || "";
+  const openTourBtn = qs("#openTourBtn");
+  if(openTourBtn){ openTourBtn.href = tourEmbed || "#"; }
   qs("#homeTour").innerHTML = tourEmbed
     ? `<iframe class="iframe" src="${tourEmbed}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`
     : `<div class="small">Add the embed link in <code>content/settings/global.json</code> → <code>tourEmbedUrl</code></div>`;
@@ -150,6 +135,10 @@ async function main(){
   // Why love list
   const why = (ap.whyLove || []);
   qs("#whyLove").innerHTML = why.map(x=> `<li>${escapeHTML(x)}</li>`).join("");
+
+  // Beds24 availability embed
+  const bedsFrame = qs("#beds24Frame");
+  if(bedsFrame){ bedsFrame.src = bookingUrl; }
 
   // Map embed
   const mapUrl = ap.neighborhood?.mapEmbedUrl || "";

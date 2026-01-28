@@ -62,23 +62,27 @@
 
       <div class="booking-section-title" style="margin-top:6px">Explore the Space</div>
 
-      <div class="explore-tabs">
-        <button id="tabGalleryBtn" type="button">Photo gallery</button>
-        <button id="tabTourBtn" class="active" type="button">3D virtual tour</button>
-      </div>
+      <div class="explore-split">
+  <div class="explore-box">
+    <div class="explore-box-head">
+      <div class="small" style="opacity:.9">Photo gallery</div>
+      <a class="btn ghost" href="gallery.html">Open gallery</a>
+    </div>
+    <div class="gallery" id="homeGallery"></div>
+  </div>
 
-      <div>
-        <div class="explore-panel" id="tabGallery" style="display:none">
-          <div class="gallery" id="homeGallery"></div>
-        </div>
-        <div class="explore-panel" id="tabTour" style="display:block">
-          <div class="embed" id="homeTour"></div>
-        </div>
-      </div>
+  <div class="explore-box">
+    <div class="explore-box-head">
+      <div class="small" style="opacity:.9">3D virtual tour</div>
+      <a class="btn ghost" id="openTourBtn" href="#" target="_blank" rel="noopener">Open in new tab</a>
+    </div>
+    <div id="homeTour" class="tour-embed"></div>
+  </div>
+</div>
 
-      <div class="booking-cta-row">
+<div class="booking-cta-row">
         <a class="btn warm" id="seeDatesBtn" href="#" target="_blank" rel="noopener">See available dates</a>
-        <a class="btn" href="apartments.html">See all apartments</a>
+        
       </div>
     </div>
 
@@ -96,9 +100,9 @@
     </div>
 
     <div class="card booking-card fade" style="margin-top:16px">
-      <div class="booking-section-title">Ready to book your stay?</div>
+      <div class="booking-section-title">Availability</div>
       <div class="ready-grid">
-        <div class="mini-cal" id="miniCal"></div>
+        <div class="avail-embed"><iframe class="iframe" id="beds24Frame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
         <div class="testimonial" id="testimonial"></div>
       </div>
       <div class="booking-cta-row" style="margin-top:14px">

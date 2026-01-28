@@ -7,8 +7,8 @@
     "poster": "assets/media/images/hero.jpg"
   },
   "sections": {
-    "apartmentsTitle": "More apartments",
-    "apartmentsSubtitle": "We have three apartments in the same residence.",
+    "apartmentsTitle": "",
+    "apartmentsSubtitle": "",
     "tourTitle": "3D Tour",
     "tourSubtitle": "Explore the residence instantly \u2014 no redirects.",
     "residenceTitle": "The Residence",
