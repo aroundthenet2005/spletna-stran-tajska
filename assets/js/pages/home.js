@@ -94,6 +94,7 @@ async function main(){
   qs("#ratingLine").textContent = ap.ratingLine || "★★★★★ • Self check‑in • Fast Wi‑Fi";
 
   const bookingUrl = ap.bookingUrl || g.bookingUrl || "#";
+  const bookingEmbedUrl = g.bookingEmbedUrl || "";
   const tourUrl = g.tourEmbedUrl || ap.tourEmbedUrl || "#";
   qs("#checkAvailTop").href = bookingUrl;
   qs("#seeDatesBtn").href = bookingUrl;
@@ -135,10 +136,23 @@ async function main(){
   // Why love list
   const why = (ap.whyLove || []);
   qs("#whyLove").innerHTML = why.map(x=> `<li>${escapeHTML(x)}</li>`).join("");
-
-  // Beds24 availability embed
+  // Beds24 availability embed (iframe if embeddable, otherwise open in new tab)
+  const availWrap = qs("#availabilityEmbed");
   const bedsFrame = qs("#beds24Frame");
-  if(bedsFrame){ bedsFrame.src = bookingUrl; }
+  const candidate = (bookingEmbedUrl || bookingUrl || "").trim();
+  const isEmbeddable = /booking2\.php\?propid=|booking\.php\?propid=|booking3\.php\?propid=/i.test(candidate);
+  if(bedsFrame){
+    if(isEmbeddable){
+      bedsFrame.src = candidate;
+    }else if(availWrap){
+      bedsFrame.remove();
+      availWrap.innerHTML = `
+        <div class="small" style="margin-bottom:10px">Availability opens on Beds24 for the best experience.</div>
+        <a class="btn primary" href="${bookingUrl}" target="_blank" rel="noopener">Check availability</a>
+      `;
+    }
+  }
+
 
   // Map embed
   const mapUrl = ap.neighborhood?.mapEmbedUrl || "";
@@ -150,7 +164,8 @@ async function main(){
   }
 
   // Mini calendar + testimonial
-  mountMiniCalendar(qs("#miniCal"));
+  const mini = qs("#miniCal");
+  if(mini){ mountMiniCalendar(mini); }
   const t = ap.testimonial || {};
   qs("#testimonial").innerHTML = `
     <div class="quote">“${escapeHTML(t.quote || "Add a guest quote in apartma1.json") }”</div>

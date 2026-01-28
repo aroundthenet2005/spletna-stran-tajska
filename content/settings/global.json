@@ -52,5 +52,6 @@
     ],
     "copyright": "\u00a9 {year} mymodernstay.com"
   },
-  "primaryApartmentId": "apartma1"
+  "primaryApartmentId": "apartma1",
+  "bookingEmbedUrl": ""
 }
