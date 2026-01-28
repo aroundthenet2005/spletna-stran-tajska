@@ -13,7 +13,7 @@
 </head>
 <body data-page="home" class="home">
   <div id="nav"></div>
-  
+
 <section class="hero hero-full">
   <div class="hero-bg" aria-hidden="true">
     <video id="heroVideo" autoplay muted loop playsinline preload="metadata"></video>
@@ -28,12 +28,12 @@
       <p class="p" id="heroSub">Three curated apartments. Clean design. Direct booking.</p>
 
       <div class="hero-full-actions">
-        <a class="btn primary" id="heroBookBtn" href="#" target="_blank" rel="noopener">BOOK NOW</a>
-        <a class="btn" id="heroTourBtn" href="#" target="_blank" rel="noopener">TAKE A 3D TOUR</a>
+        <a class="btn primary" id="heroBookBtn" href="#" target="_blank" rel="noopener">CHECK AVAILABILITY</a>
+        <a class="btn" id="heroTourBtn" href="#tour">3D TOUR</a>
         <a class="btn ghost" href="apartments.html">View apartments</a>
       </div>
 
-      <a class="hero-underline" href="#apartments">
+      <a class="hero-underline" href="#listing">
         <span style="opacity:.9">Read more</span>
         <span style="opacity:.7">▾</span>
       </a>
@@ -41,72 +41,88 @@
   </div>
 </section>
 
-<section class="section booking-wrap" id="listing">
+<!-- Booking.com-style shell (white + readable) -->
+<section id="listing" class="section">
+  <div class="booking-shell fade">
+    <!-- Head -->
+    <div class="booking-section">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+        <div style="min-width: min(520px, 100%);">
+          <h2 id="listingTitle">Your Private Retreat in the Heart of Downtown.</h2>
+          <p id="listingSub" style="margin:6px 0 0;">Stylish, fully equipped apartment for work trips or getaways.</p>
+          <div class="small" id="ratingLine" style="margin-top:10px">★★★★★ • Self check‑in • Fast Wi‑Fi</div>
+        </div>
+        <div class="cta-row">
+          <a class="btn-lite primary" id="checkAvailTop" href="#" target="_blank" rel="noopener">Check availability</a>
+          <a class="btn-lite" href="apartments.html">All apartments</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Comforts -->
+    <div class="booking-section">
+      <h2>Comforts of Home</h2>
+      <div class="comforts-grid" id="comfortGrid"></div>
+    </div>
+
+    <!-- Explore: 3D tour visible by default + gallery thumbnails + "See more" -->
+    <div class="booking-section" id="tour">
+      <h2>Explore the Space</h2>
+
+      <div class="explore-panel">
+        <div id="homeTour"></div>
+        <div class="cta-row" style="margin-top:12px">
+          <a class="btn-lite primary" id="openTourBtn" href="#" target="_blank" rel="noopener">Open 3D tour</a>
+          <a class="btn-lite" id="seePhotosBtn" href="apartments.html">See photos</a>
+        </div>
+      </div>
+
+      <div style="height:14px"></div>
+
+      <div class="explore-panel">
+        <div class="gallery-strip" id="homeGallery"></div>
+        <div class="cta-row" style="margin-top:12px">
+          <a class="btn-lite primary" id="seeMoreGalleryBtn" href="#">See more photos</a>
+          <a class="btn-lite" id="seeDatesBtn" href="#" target="_blank" rel="noopener">See available dates</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why love + map -->
+    <div class="booking-section">
+      <div class="cols-2">
+        <div class="card-lite">
+          <h2>Why Guests Love Us</h2>
+          <ul class="checklist" id="whyLove"></ul>
+        </div>
+        <div class="card-lite">
+          <h2 id="mapTitle">Discover the Neighborhood</h2>
+          <div id="mapEmbed">
+            <div class="small" style="opacity:.85">Add map embed in <code>content/apartments/apartma1.json</code> → <code>neighborhood.mapEmbedUrl</code></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom strip -->
+    <div class="booking-section">
+      <h2>Ready to book your stay?</h2>
+      <div class="booking-bottom">
+        <div class="card-lite" id="testimonial"></div>
+        <div class="card-lite">
+          <p style="margin:0 0 12px 0;">Direct booking via Beds24. No date/guest fields here — we keep it fast and clean.</p>
+          <div class="cta-row">
+            <a class="btn-lite primary" id="requestToBookBtn" href="#" target="_blank" rel="noopener">Request to book</a>
+            <a class="btn-lite" href="policies.html">View policies</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- More apartments -->
   <div class="container">
-    <div class="booking-head">
-      <div class="booking-head-text">
-        <div class="h2" id="listingTitle">Your Private Retreat in the Heart of Downtown.</div>
-        <p class="sub" id="listingSub">Stylish, fully equipped apartment for work trips or getaways.</p>
-        <div class="small" id="ratingLine" style="margin-top:8px">★★★★★ • Self check‑in • Fast Wi‑Fi</div>
-      </div>
-      <div class="booking-head-cta">
-        <a class="btn primary" id="checkAvailTop" href="#" target="_blank" rel="noopener">Check availability</a>
-      </div>
-    </div>
-
-    <div class="card booking-card fade">
-      <div class="booking-section-title">Comforts of Home</div>
-      <div class="comfort-grid" id="comfortGrid"></div>
-
-      <div class="hr"></div>
-
-      <div class="booking-section-title" style="margin-top:6px">Explore the Space</div>
-
-      <div class="tabs">
-        <button class="tab active" id="tabGalleryBtn" type="button">Photo gallery</button>
-        <button class="tab" id="tabTourBtn" type="button">3D virtual tour</button>
-      </div>
-
-      <div class="tabpanels">
-        <div class="tabpanel" id="tabGallery" style="display:block">
-          <div class="gallery-grid" id="homeGallery"></div>
-        </div>
-        <div class="tabpanel" id="tabTour" style="display:none">
-          <div class="embed" id="homeTour"></div>
-        </div>
-      </div>
-
-      <div class="booking-cta-row">
-        <a class="btn warm" id="seeDatesBtn" href="#" target="_blank" rel="noopener">See available dates</a>
-        <a class="btn" href="apartments.html">See all apartments</a>
-      </div>
-    </div>
-
-    <div class="booking-grid2">
-      <div class="card booking-card fade">
-        <div class="booking-section-title">Why Guests Love Us</div>
-        <ul class="checks" id="whyLove"></ul>
-      </div>
-      <div class="card booking-card fade">
-        <div class="booking-section-title" id="mapTitle">Discover the Neighborhood</div>
-        <div class="map" id="mapEmbed">
-          <div class="small" style="opacity:.85">Add map embed in <code>content/apartments/apartma1.json</code> → <code>neighborhood.mapEmbedUrl</code></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card booking-card fade" style="margin-top:16px">
-      <div class="booking-section-title">Ready to book your stay?</div>
-      <div class="ready-grid">
-        <div class="mini-cal" id="miniCal"></div>
-        <div class="testimonial" id="testimonial"></div>
-      </div>
-      <div class="booking-cta-row" style="margin-top:14px">
-        <a class="btn primary" id="requestToBookBtn" href="#" target="_blank" rel="noopener">Request to book</a>
-        <a class="btn ghost" href="policies.html">View policies</a>
-      </div>
-    </div>
-
     <div class="section-head" style="margin-top:26px">
       <div>
         <div class="h2" id="apTitle">More apartments</div>

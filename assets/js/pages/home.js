@@ -6,29 +6,15 @@ function stars(n=5){
   return full + empty;
 }
 
-function mountMiniCalendar(el){
-  // Simple 2-row "mini" calendar (static) — designed as a visual cue only.
-  const now = new Date();
-  const month = now.toLocaleString("en-US", { month: "long" });
-  const year = now.getFullYear();
-  const days = ["Mo","Tu","We","Th","Fr","Sa","Su"];
-  const first = new Date(year, now.getMonth(), 1);
-  const start = (first.getDay() + 6) % 7; // Monday=0
-  const total = new Date(year, now.getMonth()+1, 0).getDate();
-
-  let cells = [];
-  for(let i=0;i<start;i++) cells.push("<div class='cal-cell dim'></div>");
-  for(let d=1; d<=total; d++){
-    const cls = (d===now.getDate()) ? "cal-cell today" : "cal-cell";
-    cells.push(`<div class="${cls}">${d}</div>`);
-  }
-  el.innerHTML = `
-    <div class="cal-head">
-      <div class="cal-title">${month} ${year}</div>
-      <div class="small" style="opacity:.85">Availability is shown in the booking page.</div>
+function comfortCard(icon, key, val){
+  return `
+    <div class="comfort">
+      <div class="ico">${icon}</div>
+      <div class="txt">
+        <div class="k">${escapeHTML(key)}</div>
+        <div class="v">${escapeHTML(val)}</div>
+      </div>
     </div>
-    <div class="cal-days">${days.map(x=>`<div class="cal-day">${x}</div>`).join("")}</div>
-    <div class="cal-grid">${cells.join("")}</div>
   `;
 }
 
@@ -45,12 +31,11 @@ async function main(){
   const primaryId = (g.primaryApartmentId || "apartma1");
   const ap = aps.find(x => x.id === primaryId) || aps[0];
 
-  // Hero text (keep video)
+  // Hero
   qs("#kicker").textContent = page.hero?.kicker || "";
   qs("#heroTitle").textContent = page.hero?.title || "";
   qs("#heroSub").textContent = page.hero?.subtitle || "";
 
-  // Hero media (background video + poster fallback)
   const v = qs("#heroVideo");
   const img = qs("#heroPoster");
   const videoUrl = page.hero?.video || "";
@@ -70,99 +55,92 @@ async function main(){
     }
   }
 
-  // Hero CTAs
+  // Hero CTA
+  const bookingUrl = ap.bookingUrl || g.bookingUrl || "#";
+  const tourUrl = g.tourEmbedUrl || ap.tourEmbedUrl || "";
+
   const bookBtn = qs("#heroBookBtn");
   if(bookBtn){
-    bookBtn.href = g.bookingUrl || "#";
+    bookBtn.href = bookingUrl;
     bookBtn.textContent = "CHECK AVAILABILITY";
     bookBtn.addEventListener("click", ()=> toast("Opening booking…"));
   }
+
+  // Hero tour button: scroll to tour section (tour embed is already visible on-page)
   const tourBtn = qs("#heroTourBtn");
   if(tourBtn){
-    tourBtn.href = g.tourEmbedUrl || "#";
     tourBtn.textContent = "3D TOUR";
-    tourBtn.addEventListener("click", ()=> toast("Opening 3D tour…"));
+    tourBtn.href = "#tour";
   }
 
-  // Booking-style head
+  // Booking head text
   qs("#listingTitle").textContent = ap.landingTitle || ap.name || "Apartment";
   qs("#listingSub").textContent = ap.landingSubtitle || ap.teaser || "";
   qs("#ratingLine").textContent = ap.ratingLine || "★★★★★ • Self check‑in • Fast Wi‑Fi";
 
-  const bookingUrl = ap.bookingUrl || g.bookingUrl || "#";
-  const tourUrl = g.tourEmbedUrl || ap.tourEmbedUrl || "#";
   qs("#checkAvailTop").href = bookingUrl;
   qs("#seeDatesBtn").href = bookingUrl;
   qs("#requestToBookBtn").href = bookingUrl;
 
-  // Comforts
+  // Comforts (more readable, fits boxes)
   const facts = ap.facts || {};
   const comforts = [
-    {label: facts.sleeps || `${ap.maxGuests || 4} guests`, icon: "👤"},
-    {label: facts.bedrooms || "2 bedrooms", icon: "🛏️"},
-    {label: facts.bathrooms || "1.5 bathrooms", icon: "🚿"},
-    {label: facts.wifi || "High‑speed Wi‑Fi", icon: "📶"},
+    ["👤","Sleeps", facts.sleeps || `${ap.maxGuests || 4} guests`],
+    ["🛏️","Beds", facts.bedrooms || ap.beds || "2 beds"],
+    ["🚿","Bathrooms", facts.bathrooms || "1 bathroom"],
+    ["📶","Wi‑Fi", facts.wifi || "Fast Wi‑Fi"]
   ];
-  qs("#comfortGrid").innerHTML = comforts.map(x=>`
-    <div class="comfort">
-      <div class="comfort-ic">${x.icon}</div>
-      <div class="comfort-t">${escapeHTML(x.label)}</div>
-    </div>
-  `).join("");
+  qs("#comfortGrid").innerHTML = comforts.map(([ic,k,v]) => comfortCard(ic,k,v)).join("");
 
-  // Explore tabs
-  const tabGalleryBtn = qs("#tabGalleryBtn");
-  const tabTourBtn = qs("#tabTourBtn");
-  const tabGallery = qs("#tabGallery");
-  const tabTour = qs("#tabTour");
-
-  function setTab(which){
-    const isGallery = which==="gallery";
-    tabGalleryBtn.classList.toggle("active", isGallery);
-    tabTourBtn.classList.toggle("active", !isGallery);
-    tabGallery.style.display = isGallery ? "block" : "none";
-    tabTour.style.display = isGallery ? "none" : "block";
+  // 3D tour embed (VISIBLE by default, large)
+  const homeTour = qs("#homeTour");
+  const openTourBtn = qs("#openTourBtn");
+  if(openTourBtn){
+    openTourBtn.href = tourUrl || "#";
+    openTourBtn.style.pointerEvents = tourUrl ? "auto" : "none";
+    if(!tourUrl) openTourBtn.textContent = "Add 3D tour URL";
   }
-  tabGalleryBtn.addEventListener("click", ()=> setTab("gallery"));
-  tabTourBtn.addEventListener("click", ()=> setTab("tour"));
 
-  // Home gallery: use first 6 images
-  const gallery = (ap.gallery || []).slice(0, 6);
-  qs("#homeGallery").innerHTML = gallery.map(src=>`
-    <a class="gimg" href="apartment.html?id=${encodeURIComponent(ap.id)}">
-      <img src="${src}" alt="Gallery">
-    </a>
-  `).join("") || `<div class="small">Add images to <code>assets/media/images/01.jpg</code> …</div>`;
-
-  // 3D embed
-  const tourEmbed = g.tourEmbedUrl || "";
-  qs("#homeTour").innerHTML = tourEmbed
-    ? `<iframe src="${tourEmbed}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`
+  homeTour.innerHTML = tourUrl
+    ? `<iframe class="iframe-16x9" src="${tourUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`
     : `<div class="small">Add the embed link in <code>content/settings/global.json</code> → <code>tourEmbedUrl</code></div>`;
 
-  // Why love list
+  // Gallery thumbnails (smaller + more + "See more")
+  const gallery = (ap.gallery || []).slice(0, 8);
+  const moreHref = `apartment.html?id=${encodeURIComponent(ap.id)}`;
+  const moreBtn = qs("#seeMoreGalleryBtn");
+  if(moreBtn) moreBtn.href = moreHref;
+
+  qs("#homeGallery").innerHTML = gallery.map((src,i)=>`
+    <a href="${moreHref}" aria-label="Open gallery">
+      <img src="${src}" alt="Gallery ${i+1}">
+    </a>
+  `).join("") || `<div class="small">Add images to <code>content/apartments/${escapeHTML(ap.id)}.json</code> → <code>gallery</code></div>`;
+
+  // Why love checklist
   const why = (ap.whyLove || []);
-  qs("#whyLove").innerHTML = why.map(x=> `<li>${escapeHTML(x)}</li>`).join("");
+  qs("#whyLove").innerHTML = why.map(x=> `
+    <li><span class="tick">✓</span><span>${escapeHTML(x)}</span></li>
+  `).join("");
 
   // Map embed
   const mapUrl = ap.neighborhood?.mapEmbedUrl || "";
   const mapEl = qs("#mapEmbed");
   if(mapUrl){
-    mapEl.innerHTML = `<iframe src="${mapUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`;
+    mapEl.innerHTML = `<iframe class="map-embed" src="${mapUrl}" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>`;
   }else{
     mapEl.innerHTML = `<div class="small" style="opacity:.85">${escapeHTML(ap.neighborhood?.note || "Add a map embed URL.")}</div>`;
   }
 
-  // Mini calendar + testimonial
-  mountMiniCalendar(qs("#miniCal"));
+  // Testimonial (fits booking-shell)
   const t = ap.testimonial || {};
   qs("#testimonial").innerHTML = `
-    <div class="quote">“${escapeHTML(t.quote || "Add a guest quote in apartma1.json") }”</div>
+    <div class="quote">“${escapeHTML(t.quote || "Add a guest quote in apartma1.json")}”</div>
     <div class="small" style="margin-top:10px">— ${escapeHTML(t.author || "Guest review")}</div>
     <div class="stars" aria-label="Rating" style="margin-top:10px">${escapeHTML(stars(Number(t.stars||5)))}</div>
   `;
 
-  // Apartments (secondary) section
+  // Apartments section
   qs("#apTitle").textContent = page.sections?.apartmentsTitle || "More apartments";
   qs("#apSub").textContent = page.sections?.apartmentsSubtitle || "";
   qs("#apartmentsGrid").innerHTML = aps.map(x=>`
