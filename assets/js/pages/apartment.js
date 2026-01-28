@@ -2,7 +2,7 @@ import { getJSON, applyTheme, mountNav, mountFooter, mountFadeIns, qs, escapeHTM
 function param(name){ return new URLSearchParams(location.search).get(name); }
 async function main(){
   applyTheme(await getJSON("content/settings/theme.json"));
-  await mountNav("apartments.html");
+  await mountNav("gallery.html");
   const id = param("id") || "apartma1";
   const ap = await getJSON(`content/apartments/${id}.json`);
   qs("#title").textContent = ap.name || "";

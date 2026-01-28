@@ -1,8 +1,8 @@
 {
   "hero": {
-    "kicker": "APARTMENT 1 OF 3",
+    "kicker": "",
     "title": "A modern stay, made simple.",
-    "subtitle": "Direct booking • 3D tour • Photo gallery",
+    "subtitle": "Direct booking \u2022 3D tour \u2022 Photo gallery",
     "video": "assets/media/video/hero.mp4",
     "poster": "assets/media/images/hero.jpg"
   },
@@ -10,7 +10,7 @@
     "apartmentsTitle": "More apartments",
     "apartmentsSubtitle": "We have three apartments in the same residence.",
     "tourTitle": "3D Tour",
-    "tourSubtitle": "Explore the residence instantly — no redirects.",
+    "tourSubtitle": "Explore the residence instantly \u2014 no redirects.",
     "residenceTitle": "The Residence",
     "residenceSubtitle": "Amenities, location and the bigger picture."
   },

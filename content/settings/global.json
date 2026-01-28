@@ -1,6 +1,6 @@
 {
   "siteName": "mymodernstay.com",
-  "tagline": "Minimal, modern stays — book direct.",
+  "tagline": "Minimal, modern stays \u2014 book direct.",
   "bookingUrl": "https://beds24.com/book-calypsophuket",
   "tourEmbedUrl": "https://vt.photoup.net/15ET/calypso-garden-residences-rawai-mueang-phuket-district-phuket-tajska/embed",
   "nav": [
@@ -9,8 +9,8 @@
       "href": "index.html"
     },
     {
-      "label": "Apartments",
-      "href": "apartments.html"
+      "label": "Gallery",
+      "href": "gallery.html"
     },
     {
       "label": "The Residence",
@@ -50,7 +50,7 @@
         "href": "policies.html"
       }
     ],
-    "copyright": "© {year} mymodernstay.com"
+    "copyright": "\u00a9 {year} mymodernstay.com"
   },
   "primaryApartmentId": "apartma1"
 }
