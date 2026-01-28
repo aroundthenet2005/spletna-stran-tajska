@@ -1,8 +1,8 @@
 {
   "id": "apartma2",
   "name": "Apartma 2",
-  "teaser": "Short, premium one‑liner that sells.",
-  "description": "Longer description. Add amenities, size, vibe, and who it’s perfect for.",
+  "teaser": "Opis apartma 2",
+  "description": "Opis apartma 2 (dolgi opis)",
   "maxGuests": 4,
   "beds": "1 King + sofa bed",
   "size": "42 m²",
